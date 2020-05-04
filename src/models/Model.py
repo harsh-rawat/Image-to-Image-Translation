@@ -115,8 +115,8 @@ class Model(ABC):
         gen_params = list(self.genX.parameters()) + list(self.genY.parameters())
 
         self.gen_optim = optim.Adam(gen_params, lr=self.lr, betas=self.betas)
-        self.disX_optim = optim.Adam(self.disX.parameters(), lr=self.learning_rate, betas=self.betas)
-        self.disY_optim = optim.Adam(self.disY.parameters(), lr=self.learning_rate, betas=self.betas)
+        self.disX_optim = optim.Adam(self.disX.parameters(), lr=self.lr, betas=self.betas)
+        self.disY_optim = optim.Adam(self.disY.parameters(), lr=self.lr, betas=self.betas)
 
         self.lr_schedule_disX = self.get_learning_schedule(self.disX_optim, lr_schedular_options)
         self.lr_schedule_disY = self.get_learning_schedule(self.disY_optim, lr_schedular_options)
@@ -423,8 +423,8 @@ class Model(ABC):
         gen_params = list(self.genX.parameters()) + list(self.genY.parameters())
 
         self.gen_optim = optim.Adam(gen_params, lr=self.lr, betas=self.betas)
-        self.disX_optim = optim.Adam(self.disX.parameters(), lr=self.learning_rate, betas=self.betas)
-        self.disY_optim = optim.Adam(self.disY.parameters(), lr=self.learning_rate, betas=self.betas)
+        self.disX_optim = optim.Adam(self.disX.parameters(), lr=self.lr, betas=self.betas)
+        self.disY_optim = optim.Adam(self.disY.parameters(), lr=self.lr, betas=self.betas)
 
         self.lr_schedule_disX = self.get_learning_schedule(self.disX_optim, self.lr_policy)
         self.lr_schedule_disY = self.get_learning_schedule(self.disY_optim, self.lr_policy)
