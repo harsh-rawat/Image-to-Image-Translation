@@ -9,12 +9,12 @@ from torchvision.utils import save_image
 import torchvision.models as models
 import torch.optim.lr_scheduler as lr_schedular
 
-from src.models.Discriminator import Discriminator
-from src.models.Generator_Fusion import Generator_Fusion
-from src.models.Generator_RESNET import Generator_RESNET
-from src.models.Generator_Unet import Generator_Unet
-from src.models.Generator_Unet_Fusion import Generator_Unet_Fusion
-from src.models.Generator_Unet_Shallow import Generator_Unet_Shallow
+from models.Discriminator import Discriminator
+from models.Generator_Fusion import Generator_Fusion
+from models.Generator_RESNET import Generator_RESNET
+from models.Generator_Unet import Generator_Unet
+from models.Generator_Unet_Fusion import Generator_Unet_Fusion
+from models.Generator_Unet_Shallow import Generator_Unet_Shallow
 
 
 class Model(ABC):

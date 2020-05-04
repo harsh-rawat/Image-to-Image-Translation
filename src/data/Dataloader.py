@@ -1,8 +1,5 @@
 import torch
 from data.CustomDataset import CustomDataset
-from random import shuffle
-import pickle
-import pathlib
 import os
 
 

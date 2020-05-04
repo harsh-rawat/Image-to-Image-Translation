@@ -8,7 +8,6 @@ import glob
 import os
 import pathlib
 from PIL import Image
-from skimage import color
 import re
 
 
