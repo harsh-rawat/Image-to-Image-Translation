@@ -200,7 +200,7 @@ class Model(ABC):
                     one_label = one_label.cuda()
 
                 # Update Discriminator X
-                self.dis_X_optim.zero_grad()
+                self.disX_optim.zero_grad()
 
                 fake_images_X = self.genY(imgs_Y)
 
@@ -209,10 +209,10 @@ class Model(ABC):
 
                 loss_disX = loss_fake_disX + loss_real_disX
                 loss_disX.backward()
-                self.dis_X_optim.step()
+                self.disX_optim.step()
 
                 # Discriminator Y update - Real and Generated Images
-                self.dis_Y_optim.zero_grad()
+                self.disY_optim.zero_grad()
 
                 fake_images_Y = self.genX(imgs_X)
                 loss_fake_disY = mean_loss(self.disY(fake_images_Y), zero_label)
@@ -220,7 +220,7 @@ class Model(ABC):
 
                 loss_disY = loss_fake_disY + loss_real_disY
                 loss_disY.backward()
-                self.dis_Y_optim.step()
+                self.disY_optim.step()
 
                 # Generator Updates : Generator loss on real images and cyclic consistency check
 
