@@ -339,9 +339,10 @@ class Model(ABC):
             if self.device is not None:
                 img_test = img_test.cuda()
 
-            filename = '{}/Test Images/{}_{}.{}'.format(self.base_path, save_filename, self.count, self.image_format)
-            real_filename = '{}/Test Images/{}_{}_real.{}'.format(self.base_path, save_filename, self.count,
-                                                                  self.image_format)
+            filename = '{}/Test Images/{}_{}.{}'.format(self.base_path, save_filename,
+                                                        counter_images_generated, self.image_format)
+            real_filename = '{}/Test Images/{}_{}_real.{}'.format(self.base_path, save_filename,
+                                                                  counter_images_generated, self.image_format)
 
             output = None
             if evaluate_X:
