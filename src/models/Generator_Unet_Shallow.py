@@ -20,10 +20,10 @@ class Generator_Unet_Shallow(nn.Module):
         self.layer_4 = nn.Conv2d(ngf*4, ngf*8, 4, padding=1, stride=2)
         self.layer_4_bn = nn.BatchNorm2d(ngf*8)
 
-        self.layer_5 = nn.Conv2d(ngf*8, ngf*16, 4, padding=1, stride=2)
-        self.layer_5_bn = nn.BatchNorm2d(ngf*16)
+        self.layer_5 = nn.Conv2d(ngf*8, ngf*8, 4, padding=1, stride=2)
+        self.layer_5_bn = nn.BatchNorm2d(ngf*8)
 
-        self.layer_6 = nn.ConvTranspose2d(ngf*16, ngf*8, 4, padding=1, stride=2)
+        self.layer_6 = nn.ConvTranspose2d(ngf*8, ngf*8, 4, padding=1, stride=2)
         self.layer_6_bn = nn.BatchNorm2d(ngf*8)
 
         self.layer_7 = nn.ConvTranspose2d(ngf*8, ngf*4, 4, padding=1, stride=2)
