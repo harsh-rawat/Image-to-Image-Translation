@@ -135,7 +135,7 @@ class Model(ABC):
         pass
 
     def train_model(self, trainloader, average_loss, eval=(False, None, None), save_model=(False, 25),
-                    display_test_image=(False, None, 25)):
+                    display_test_image=(False, None, 25), smoothen=False):
 
         train_X = trainloader[0]
         train_Y = trainloader[1]
@@ -149,6 +149,9 @@ class Model(ABC):
         self.disY.train()
         self.genX.train()
         self.genY.train()
+
+        if smoothen:
+            print('Smoothening is enabled!');
 
         sample_img_test = None
         if display_test_image[0]:
@@ -204,8 +207,12 @@ class Model(ABC):
 
                 fake_images_X = self.genY(imgs_Y)
 
+                factor = 1
+                if smoothen:
+                    factor = 0.9
+
                 loss_fake_disX = mean_loss(self.disX(fake_images_X), zero_label)
-                loss_real_disX = mean_loss(self.disX(imgs_X), one_label)
+                loss_real_disX = mean_loss(self.disX(imgs_X), one_label * factor)
 
                 loss_disX = loss_fake_disX + loss_real_disX
                 loss_disX.backward()
@@ -216,7 +223,7 @@ class Model(ABC):
 
                 fake_images_Y = self.genX(imgs_X)
                 loss_fake_disY = mean_loss(self.disY(fake_images_Y), zero_label)
-                loss_real_disY = mean_loss(self.disY(imgs_Y), one_label)
+                loss_real_disY = mean_loss(self.disY(imgs_Y), one_label * factor)
 
                 loss_disY = loss_fake_disY + loss_real_disY
                 loss_disY.backward()

@@ -125,8 +125,10 @@ def train_model(model, trainloaders, testloaders, average_loss, epochs):
         epochs = int(epochs)
         model.change_params(epochs=epochs)
 
+    smoothen_flag = config.get('ModelTrainingSection', 'smoothen') == 'True'
+
     model.train_model(trainloaders, average_loss, eval=eval, display_test_image=display_test_img,
-                      save_model=save)
+                      save_model=save, smoothen=smoothen_flag)
     average_loss.plot()
 
 
